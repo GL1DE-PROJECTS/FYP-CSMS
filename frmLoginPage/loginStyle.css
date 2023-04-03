@@ -122,13 +122,13 @@ body {
   background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
 }
 
-label {
+#lblRebMe {
   display: block;
   position: relative;
   margin-left: 30px;
 }
 
-label::before {
+#lblRebMe::before {
   content: ' \f00c';
   position: absolute;
   font-family: FontAwesome;
@@ -140,7 +140,7 @@ label::before {
   transition: all 0.2s linear;
 }
 
-label:hover::before {
+#lblRebMe:hover::before {
   font-family: FontAwesome;
   content: ' \f00c';
   color: #fff;
@@ -148,11 +148,11 @@ label:hover::before {
   background: #70F570;
 }
 
-label:hover::before .text-checkbox {
+#lblRebMe:hover::before .text-checkbox {
   background: #70F570;
 }
 
-label span.text-checkbox {
+#lblRebMe span.text-checkbox {
   display: inline-block;
   height: auto;
   position: relative;
@@ -160,7 +160,7 @@ label span.text-checkbox {
   transition: all 0.2s linear;
 }
 
-label input[type="checkbox"] {
+#lblRebMe input[type="checkbox"] {
   display: none;
 }
 
@@ -188,12 +188,18 @@ label input[type="checkbox"] {
 }
 
 /* Modal Content/Box */
-.modal-content {
+.modal-content{
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+	margin: auto;
+	border: 1px solid #888;
+	width: 534px; /* added this to limit the width of the modal */
+	height: 696px; /* added this to limit the height of the modal */
+	overflow-y: auto; /* added this to enable vertical scrolling if needed */
+	display: flex; /* added this to center the content vertically */
+	flex-direction: column; /* added this to stack the content vertically */
+	justify-content: center; /* added this to center the content vertically */
+	align-items: center; /* added this to center the content horizontally */
+  margin-top: 100px;
 }
 
 /* The Close Button */
@@ -212,3 +218,87 @@ label input[type="checkbox"] {
 }
 
 /* #endregion */
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+.wrapper{
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+  background: #fff;
+  padding: 34px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+.wrapper h2{
+  position: relative;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+.wrapper h2::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 28px;
+  border-radius: 12px;
+  background: #4070f4;
+}
+.wrapper form{
+  margin-top: 30px;
+}
+.wrapper form .input-box{
+  height: 52px;
+  margin: 18px 0;
+}
+form .input-box input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: 1.5px solid #C7BEBE;
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.input-box input:focus,
+.input-box input:valid{
+  border-color: #4070f4;
+}
+form .policy{
+  display: flex;
+  align-items: center;
+}
+form h3{
+  color: #707070;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.input-box.button input{
+  color: #fff;
+  letter-spacing: 1px;
+  border: none;
+  background: #4070f4;
+  cursor: pointer;
+}
+.input-box.button input:hover{
+  background: #0e4bf1;
+}
+form .text h3{
+ color: #333;
+ width: 100%;
+ text-align: center;
+}
+form .text h3 a{
+  color: #4070f4;
+  text-decoration: none;
+}
+form .text h3 a:hover{
+  text-decoration: underline;
+}
