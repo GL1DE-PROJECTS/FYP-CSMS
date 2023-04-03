@@ -193,7 +193,7 @@ body {
 	margin: auto;
 	border: 1px solid #888;
 	width: 534px; /* added this to limit the width of the modal */
-	height: 696px; /* added this to limit the height of the modal */
+	height: 737px; /* added this to limit the height of the modal */
 	overflow-y: auto; /* added this to enable vertical scrolling if needed */
 	display: flex; /* added this to center the content vertically */
 	flex-direction: column; /* added this to stack the content vertically */
