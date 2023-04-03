@@ -1,3 +1,13 @@
+$(document).on('mousewheel', function(e) {
+    if (e.ctrlKey) {
+      var scale = $('body').css('transform') || 'scale(1)';
+      scale = scale.replace('scale(', '').replace(')', '');
+      scale = parseFloat(scale) + (e.originalEvent.deltaY > 0 ? -0.1 : 0.1);
+      $('body').css('transform', 'scale(' + scale + ')');
+    }
+  });
+   
+
 $(document).ready(function () {
     
     //#region Modal Create Account
