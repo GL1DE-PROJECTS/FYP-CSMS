@@ -44,6 +44,6 @@ $(document).ready(function () {
 });
 
 function toMainPage() {
-    window.location.href = "../frmMainPage/frmMainPage.html";
+    window.location.href = "../HTML/frmMainPage.html";
     return false;
 }
