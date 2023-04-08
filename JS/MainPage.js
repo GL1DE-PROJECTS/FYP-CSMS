@@ -10,4 +10,17 @@ $(document).ready(function () {
         $("body").toggleClass("active");
     });
 
+    $("#myBtn").click(function () {
+        $("#Modal-UserSettings").css("display", "block");
+    });
+
+    $(".close").click(function () {
+        $("#Modal-UserSettings").css("display", "none");
+    });
+
+    $(window).click(function (event) {
+        if (event.target == document.getElementById("myModal")) {
+            $("#Modal-Account").css("display", "none");
+        }
+    });
 });
