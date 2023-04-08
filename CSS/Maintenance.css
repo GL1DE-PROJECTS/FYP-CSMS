@@ -1,0 +1,42 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content{
+    background-color: #fefefe;
+      margin: auto;
+      border: 1px solid #888;
+      width: 534px; /* added this to limit the width of the modal */
+      height: 737px; /* added this to limit the height of the modal */
+      overflow-y: auto; /* added this to enable vertical scrolling if needed */
+      display: flex; /* added this to center the content vertically */
+      flex-direction: column; /* added this to stack the content vertically */
+      justify-content: center; /* added this to center the content vertically */
+      align-items: center; /* added this to center the content horizontally */
+    margin-top: 100px;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
