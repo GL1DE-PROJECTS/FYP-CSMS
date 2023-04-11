@@ -6,6 +6,15 @@
 
 $(document).ready(function () {
 
+    $(window).resize(function () {
+        var windowHeight = $(window).height();
+        var windowWidth = $(window).width();
+
+        // Set the height and width of the element based on the window size
+        $('body').css('height', windowHeight);
+        $('body').css('width', windowWidth);
+    });
+
     $(".hamburger").on("click", function () {
         $("body").toggleClass("active");
     });

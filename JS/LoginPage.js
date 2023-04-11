@@ -41,6 +41,28 @@ $(document).ready(function () {
         }
     });
     //#endregion
+
+    //#region JS for send Email
+    $('#email-form').submit(function(e) {
+        e.preventDefault(); // Prevent the form from submitting normally
+    
+        // Get the form data
+        const formData = $(this).serialize();
+    
+        // Send the AJAX request
+        $.ajax({
+          type: 'POST',
+          url: 'send-email.php',
+          data: formData,
+          success: function(response) {
+            $('#response').html(response);
+          },
+          error: function() {
+            $('#response').html('Failed to send email');
+          }
+        });
+      });
+    //#endregion
 });
 
 function toMainPage() {
