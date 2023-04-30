@@ -42,27 +42,67 @@ $(document).ready(function () {
     });
     //#endregion
 
-    //#region JS for send Email
-    $('#email-form').submit(function(e) {
-        e.preventDefault(); // Prevent the form from submitting normally
+    // //#region JS for send Email
+    // $('#email-form').submit(function(e) {
+    //     e.preventDefault(); // Prevent the form from submitting normally
     
-        // Get the form data
-        const formData = $(this).serialize();
+    //     // Get the form data
+    //   const formData = $(this).serialize();
+    //   const to = $('#recipient').val();
+    //   // const subject = $('#subject').val();
+    //   // const message = $('#message').val();
     
-        // Send the AJAX request
-        $.ajax({
-          type: 'POST',
-          url: 'send-email.php',
-          data: formData,
-          success: function(response) {
-            $('#response').html(response);
-          },
-          error: function() {
-            $('#response').html('Failed to send email');
-          }
-        });
-      });
+    //     // Send the AJAX request
+    //     $.ajax({
+    //       type: 'POST',
+    //       url: '../PHP/send_email.php',
+    //       data: {
+    //         formData,
+    //         to: to
+    //       },
+    //       success: function(response) {
+    //         $('#response').html(response);
+    //       },
+    //       error: function() {
+    //         $('#response').html('Failed to send email');
+    //       }
+    //     });
+    //   });
     //#endregion
+
+    $('#email-form').submit(function(e) {
+      e.preventDefault();
+      $.ajax({
+          url: '../PHP/register.php',
+          method: 'POST',
+          data: $(this).serialize(),
+          success: function(response) {
+            Swal.fire({
+              title: 'Success!',
+              text: 'Your data has been submitted successfully.',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            }).then(function () {
+              console.log(response);
+              $('#email-form')[0].reset();
+              // Do something on success
+              // Redirect to a different page or do something else
+              // after the user clicks "OK"
+              $("#Modal-Account").css("display", "none");
+            });
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              console.log(textStatus, errorThrown);
+              // Do something on error
+              Swal.fire({
+                title: 'Error!',
+                text: 'There was an error submitting your data.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+          }
+      });
+  });
 });
 
 function toMainPage() {
