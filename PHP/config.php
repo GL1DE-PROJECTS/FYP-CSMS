@@ -4,8 +4,15 @@
     $db_pass='';
     $db_name='fyp_csms';
 
-    $conn=mysqli_connect($db_host,$db_user,$db_pass,$db_name);
+    // $conn=mysqli_connect($db_host,$db_user,$db_pass,$db_name);
 
+    // Create connection
+    $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 
-    $test = "test";
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    echo "Connected successfully";
 ?>
