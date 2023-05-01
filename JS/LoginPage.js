@@ -106,6 +106,33 @@ $(document).ready(function () {
 });
 
 function toMainPage() {
-    window.location.href = "../HTML/frmMainPage.html";
-    return false;
+  var username = $('input[type="text"]').val();
+  var password = $('input[type="password"]').val();
+
+  $.ajax({
+    type: 'POST',
+    url: '../PHP/checkLogin.php',
+    data: { username: username, password: password },
+    success: function (response) {
+      if (response === 'success') {
+        var temp = response;
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your Valid Credentials',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(function () {
+          window.location.href = 'frmMainPage.html';
+        });
+      } else {
+        var temp = response;
+        Swal.fire({
+          title: 'MASALAH DUNIA!',
+          text: 'There was an error',
+          icon: 'error',
+          confirmButtonText: 'YE LAHH'
+        });
+      }
+    }
+  });
 }

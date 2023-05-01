@@ -6,15 +6,13 @@
 
     // $conn=mysqli_connect($db_host,$db_user,$db_pass,$db_name);
 
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
+    // Create connection
+    $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
     }
 
-
-    $test = "test";
+    echo "Connected successfully";
 ?>
