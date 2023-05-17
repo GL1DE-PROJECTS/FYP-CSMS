@@ -15,8 +15,6 @@
 
 
     $strSql = "SELECT * FROM Users WHERE name = '$username' AND password = '$password'";
-    echo "test";
-    echo $strSql;
     $result = mysqli_query($conn, $strSql);
 
     if($result)
@@ -24,11 +22,13 @@
         if(mysqli_num_rows($result)== 1)
         {
             mysqli_close($conn);
+            ob_clean();
             echo "success";
         }
         else
         {
             mysqli_close($conn);
+            ob_clean();
             echo "fail";
         }
     }
