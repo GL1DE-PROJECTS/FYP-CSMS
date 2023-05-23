@@ -102,8 +102,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="../html/buttons.html">Buttons</a>
-                        <a class="collapse-item" href="../html/cards.html">Cards</a>
+                        <a class="collapse-item" href="../PHP/buttons.php">Buttons</a>
+                        <a class="collapse-item" href="../PHP/cards.php">Cards</a>
                     </div>
                 </div>
             </li>
@@ -117,10 +117,10 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="../html/utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="../html/utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="../html/utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="../html/utilities-other.html">Other</a>
+                        <a class="collapse-item" href="../PHP/utilities-color.php">Colors</a>
+                        <a class="collapse-item" href="../PHP/utilities-border.php">Borders</a>
+                        <a class="collapse-item" href="../PHP/utilities-animation.php">Animations</a>
+                        <a class="collapse-item" href="../PHP/utilities-other.php">Other</a>
                     </div>
                 </div>
             </li>
@@ -142,27 +142,27 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="../html/login.html">Login</a>
+                        <a class="collapse-item" href="../PHP/login.php">Login</a>
                         <a class="collapse-item" href="../html/register.html">Register</a>
-                        <a class="collapse-item" href="../html/forgot-password.html">Forgot Password</a>
+                        <a class="collapse-item" href="../PHP/forgot-password.php">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="../html/404.html">404 Page</a>
-                        <a class="collapse-item" href="../html/blank.html">Blank Page</a>
+                        <a class="collapse-item" href="../PHP/404.php">404 Page</a>
+                        <a class="collapse-item" href="../PHP/blank.php">Blank Page</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="../html/charts.html">
+                <a class="nav-link" href="../PHP/charts.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="../html/tables.html">
+                <a class="nav-link" href="../PHP/getInventory.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>
@@ -480,7 +480,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="../PHP/login.php">Logout</a>
                 </div>
             </div>
         </div>

@@ -1,3 +1,15 @@
+<?php
+    session_start();
+
+    if ($_SESSION["Login"] != "YES")
+        header("Location: ../html/index.html");
+
+    function displayCurrentDateTime() {
+        $currentDateTime = date('Y-m-d');
+        echo "Current date: $currentDateTime";
+        }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
