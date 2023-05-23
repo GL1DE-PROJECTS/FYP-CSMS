@@ -122,7 +122,7 @@ function toMainPage() {
           icon: 'success',
           confirmButtonText: 'OK'
         }).then(function () {
-          window.location.href = 'frmMainPage.html';
+          window.location.href = '../html/Main.html';
         });
       } else {
         var temp = response;
