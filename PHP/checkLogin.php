@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     require("config.php");
 
     if (!$conn) {
@@ -16,6 +16,7 @@
 
     $strSql = "SELECT * FROM Users WHERE name = '$username' AND password = '$password'";
     $result = mysqli_query($conn, $strSql);
+    $rows = mysqli_fetch_assoc($result);
 
     if($result)
     {
@@ -24,6 +25,9 @@
             mysqli_close($conn);
             ob_clean();
             echo "success";
+            $_SESSION["Login"] = "YES";
+            $_SESSION["USER"] = $rows["name"];
+            $_SESSION["ID"] = $rows["id"];
         }
         else
         {

@@ -38,7 +38,7 @@ $(document).ready(function () {
     });
 
     $("#btnInventory").click(function () {
-        $('#Home').html('<iframe id="Testiframe" src="../HTML/frmInventory.html" frameborder="0"></iframe>');
+        $('#Home').html('<iframe id="Testiframe" src="/PHP/getInventory.php" frameborder="0"></iframe>');
     });
 
     $("#btnMaintenance").click(function () {
