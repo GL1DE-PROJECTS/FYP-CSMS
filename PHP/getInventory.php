@@ -1,13 +1,14 @@
 <?php
-    session_start();
+session_start();
 
-    if ($_SESSION["Login"] != "YES")
-        header("Location: ../html/index.html");
+if ($_SESSION["Login"] != "YES")
+    header("Location: ../html/index.html");
 
-    function displayCurrentDateTime() {
-        $currentDateTime = date('Y-m-d');
-        echo "Current date: $currentDateTime";
-        }
+function displayCurrentDateTime()
+{
+    $currentDateTime = date('Y-m-d');
+    echo "Current date: $currentDateTime";
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,42 +22,31 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
-
-    <!-- Bootstrap core JavaScript-->
+    <title>FYP-CSMS</title>
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="../JS/demo/datatables-demo.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="../JS/logout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
 
-    <!-- Custom fonts for this template -->
+    <!-- <script src="../JS/demo/datatables-demo.js"></script> -->
+    <script src="../JS/logout.js"></script>
+    <script src="../JS/Inventory.js"></script>
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this page -->
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.4/sweetalert2.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.4/sweetalert2.min.css" />
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    
+
     <!-- Custom styles for this template -->
     <link href="../CSS/sb-admin-2.css" rel="stylesheet">
+    <link href="../CSS/inventoryModal.css" rel="stylesheet">
 
 
 </head>
@@ -74,7 +64,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">FYP CSMS</div>
             </a>
 
             <!-- Divider -->
@@ -160,6 +150,12 @@
                 <a class="nav-link" href="../PHP/charts.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="../PHP/Sales.php">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Sales</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
@@ -380,7 +376,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                    <p class="mb-4">Inventory for car sales encompasses the diverse range of vehicles, representing a dealership's available stock of new and used cars ready to be showcased and sold to customers
                         For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
 
                     <!-- DataTales Example -->
@@ -393,7 +389,8 @@
                                 <table id="myTable" class="display">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th hidden>ID</th>
+                                            <th>...</th>
                                             <th>Make</th>
                                             <th>Model</th>
                                             <th>Year</th>
@@ -403,6 +400,7 @@
                                             <th>Condition</th>
                                             <th>Location</th>
                                             <th>Status</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -414,12 +412,13 @@
                                             die('Connection failed: ' . mysqli_connect_error());
                                         }
 
-                                        $query = "SELECT * FROM inventory";
+                                        $query = "SELECT * FROM inventory WHERE delStat <> 1";
                                         $result = mysqli_query($conn, $query);
                                         $intCount = 0;
                                         while ($rows = mysqli_fetch_assoc($result)) {
                                         ?>
                                             <tr>
+                                                <td hidden><?php echo $rows["ID"]; ?></td>
                                                 <td><?php echo $intCount + 1 ?></td>
                                                 <td><?php echo $rows["Make"]; ?></td>
                                                 <td><?php echo $rows["Model"]; ?></td>
@@ -430,6 +429,7 @@
                                                 <td><?php echo $rows["Cond"]; ?></td>
                                                 <td><?php echo $rows["Location"]; ?></td>
                                                 <td><?php echo $rows["Status"]; ?></td>
+                                                <td><button class="btnDel" onclick="deleteRow(this)">Delete</button></td>
                                             </tr>
                                         <?php
                                             $intCount++;
@@ -441,7 +441,15 @@
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <a id="myBtn" href="#" class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-plus-sign"></span> New Inventory
+                        </a>
+                    </div>
 
+                    <div>
+
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -487,62 +495,65 @@
             </div>
         </div>
     </div>
-</body>
 
-</html>
+    <div id="Modal-Account" class="modalAcc">
+        <!-- Modal content -->
+        <div id="ModalCreateAcc" class="modal-contentAcc">
+            <span class="close">&times;</span>
+            <p>Insert new data for Inventoryr</p>
+            <div class="wrapper">
+                <h2>Add New Inventory</h2>
+                <form method="post" action="../PHP/insertInventory.php" id="inventory-form">
+                    <div class="input-box">
+                        <input type="text" placeholder="Enter Make" name="Make">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Enter Model" name="Model">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Enter Year" name="Year">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Enter Price" name="Price">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Enter Color" name="Color">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Enter Mileage" name="Mileage">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Enter Condition" name="Condition">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Enter Location" name="Location">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Enter Status" name="Status">
+                    </div>
+                    <div class="input-box button">
+                        <br>
+                        <input type="Submit" value="Insert">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-<!-- <!DOCTYPE html>
-<html lang="en">
+    <div id="id01" class="modalDel">
+        <span class="close">&times;</span>
+        <form class="modal-contentDel">
+            <div class="containerDel">
+                <h1>Delete Entry</h1>
+                <p>Are you sure you want to delete this row of data?</p>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/inventory.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="/JS/inventory.js"></script>
-    <script>
-    </script>
-
-    <title>INVENTORY</title>
-</head>
-
-<body>
-    <h1>Car Sales Inventory</h1>
-    <div class="add-button-container">
-        <form action="">
-            <table class="table" id="mainTable">
-                <tbody>
-                    <tr>
-                        <td>
-                            <div>
-                                <table class="table" id="leftTable">
-                                    <tr>
-                                        <h1>Kiri</h1>
-                                    </tr>
-                                </table>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <table class="table" id="rightTable">
-                                    <tr>
-                                        <h1>kanan</h1>
-                                    </tr>
-                                </table>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Delete</button>
+                </div>
+            </div>
         </form>
     </div>
 </body>
 
-</html> -->
+</html>

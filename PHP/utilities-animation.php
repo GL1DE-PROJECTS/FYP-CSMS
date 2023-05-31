@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Animation Utilities</title>
+    <title>FYP-CSMS -Animation Utilities</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -48,7 +48,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">FYP CSMS</div>
             </a>
 
             <!-- Divider -->
@@ -138,6 +138,12 @@
                 <a class="nav-link" href="../PHP/charts.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="../PHP/Sales.php">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Sales</span></a>
             </li>
 
             <!-- Nav Item - Tables -->

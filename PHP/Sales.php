@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FYP-CSMS -Blank</title>
+    <title>FYP-CSMS -Charts</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,6 +29,8 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -113,14 +115,13 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-                    aria-controls="collapsePages">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
-                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
-                    data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="../PHP/login.php">Login</a>
@@ -129,7 +130,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="../PHP/404.php">404 Page</a>
-                        <a class="collapse-item active" href="../PHP/blank.php">Blank Page</a>
+                        <a class="collapse-item" href="../PHP/blank.php">Blank Page</a>
                     </div>
                 </div>
             </li>
@@ -379,7 +380,84 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Charts</h1>
+                    <p class="mb-4">Chart.js is a third party plugin that is used to generate the charts in this theme.
+                        The charts below have been customized - for further customization options, please visit the <a
+                            target="_blank" href="https://www.chartjs.org/docs/latest/">official Chart.js
+                            documentation</a>.</p>
+
+                    <!-- Content Row -->
+                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary"><?php displayCurrentDateTime() ?></h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="myTable" class="display">
+                                    <thead>
+                                        <tr>
+                                            <th hidden>ID</th>
+                                            <th>...</th>
+                                            <th>Sales Date</th>
+                                            <th hidden>Customer ID</th>
+                                            <th hidden>Product ID</th>
+                                            <th>Price</th>
+                                            <th hidden>Seller ID</th>
+                                            <th>Payment Method</th>
+                                            <th>Discount</th>
+                                            <th>Tax</th>
+                                            <th>Shipping City</th>
+                                            <th>Order Status</th>
+                                            <th>Payment Status</th>
+                                            <th>---</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        require("config.php");
+
+                                        if (!$conn) {
+                                            echo 'failure';
+                                            die('Connection failed: ' . mysqli_connect_error());
+                                        }
+
+                                        $query = "SELECT * FROM CarSales";
+                                        $result = mysqli_query($conn, $query);
+                                        $intCount = 0;
+                                        while ($rows = mysqli_fetch_assoc($result)) {
+                                        ?>
+                                            <tr>
+                                                <td hidden><?php echo $rows["sales_id"]; ?></td>
+                                                <td><?php echo $intCount + 1 ?></td>
+                                                <td><?php echo $rows["sales_date"]; ?></td>
+                                                <td hidden><?php echo $rows["customer_id"]; ?></td>
+                                                <td hidden><?php echo $rows["product_id"]; ?></td>
+                                                <td><?php echo $rows["total_price"]; ?></td>
+                                                <td hidden><?php echo $rows["salesperson_id"]; ?></td>
+                                                <td><?php echo $rows["payment_method"]; ?></td>
+                                                <td><?php echo $rows["discount"]; ?></td>
+                                                <td><?php echo $rows["tax"]; ?></td>
+                                                <td><?php echo $rows["shipping_address"]; ?></td>
+                                                <td><?php echo $rows["order_status"]; ?></td>
+                                                <td><?php echo $rows["payment_status"]; ?></td>
+                                                <td><button class="btnDel" onclick="deleteRow(this)">Delete</button></td>
+                                            </tr>
+                                        <?php
+                                            $intCount++;
+                                        }
+                                        mysqli_close($conn);
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a id="myBtn" href="../PHP/newSalesForm.php" class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-plus-sign"></span> New Sales
+                        </a>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -421,13 +499,13 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" >Cancel</button>
                     <a class="btn btn-primary" onclick="logout()">Logout</a>
                 </div>
             </div>
         </div>
     </div>
-
+    
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -437,9 +515,18 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../JS/Sales.js"></script>
     <script src="../JS/logout.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.4/sweetalert2.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
 </body>
 
