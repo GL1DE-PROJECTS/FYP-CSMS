@@ -380,8 +380,8 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Charts</h1>
-                    <p class="mb-4">Chart.js is a third party plugin that is used to generate the charts in this theme.
+                    <h1 class="h3 mb-2 text-gray-800">Sales</h1>
+                    <p class="mb-4">Car sales involve the buying and selling of vehicles for commercial purposes.
                         The charts below have been customized - for further customization options, please visit the <a
                             target="_blank" href="https://www.chartjs.org/docs/latest/">official Chart.js
                             documentation</a>.</p>
@@ -422,7 +422,7 @@
                                             die('Connection failed: ' . mysqli_connect_error());
                                         }
 
-                                        $query = "SELECT * FROM CarSales";
+                                        $query = "SELECT * FROM CarSales WHERE delStat <> 1";
                                         $result = mysqli_query($conn, $query);
                                         $intCount = 0;
                                         while ($rows = mysqli_fetch_assoc($result)) {

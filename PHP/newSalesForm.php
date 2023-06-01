@@ -360,7 +360,7 @@ function displayCurrentDateTime()
                     <!-- Content Row -->
                     <div>
                         <h2>Sales Registration Form</h2>
-                        <form action="insert_sales.php" method="POST">
+                        <form action="insert_sales.php" method="POST" id="newSales">
                             <div class="form-group">
                                 <label for="sales_date">Sales Date:</label>
                                 <input type="datetime-local" id="sales_date" name="sales_date" required>
@@ -368,7 +368,7 @@ function displayCurrentDateTime()
 
                             <div class="form-group">
                                 <label for="customer_id">Customer ID:</label>
-                                <input type="number" id="customer_id" name="customer_id" required>
+                                <input type="text" id="customer_id" name="customer_id" required>
                             </div>
 
                             <div class="form-group">
@@ -392,7 +392,7 @@ function displayCurrentDateTime()
                                     while ($rows = mysqli_fetch_assoc($result)) {
                                         $product = $rows["Make"] . " " . $rows["Model"] . " " . $rows["chasis"];
                                     ?>
-                                        <option value="<?php echo $rows["ID"]; ?>" style="font-weight: bold"><?php echo $product; ?></option>
+                                        <option value=<?php echo $rows["ID"]; ?> style="font-weight: bold"><?php echo $product; ?></option>
                                     <?php
                                         $intCount++;
                                     }
@@ -407,18 +407,13 @@ function displayCurrentDateTime()
                             </div>
 
                             <div class="form-group">
-                                <label for="unit_price">Unit Price:</label>
-                                <input type="number" step="0.01" id="unit_price" name="unit_price" required>
-                            </div>
-
-                            <div class="form-group">
                                 <label for="total_price">Total Price:</label>
                                 <input type="number" step="0.01" id="total_price" name="total_price" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="salesperson_id">Salesperson ID:</label>
-                                <input type="number" id="salesperson_id" name="salesperson_id" required>
+                                <input type="text" id="salesperson_id" name="salesperson_id" required>
                             </div>
 
                             <div class="form-group">
