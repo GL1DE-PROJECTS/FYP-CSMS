@@ -1,0 +1,25 @@
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+}
+
+.col-md-6 {
+    width: 50%;
+    float: left;
+}
+
+.col-md-12 {
+    width: 100%;
+    clear: both;
+}
+
+.btn {
+    margin-top: 10px;
+}
