@@ -49,19 +49,33 @@ $(document).ready(function () {
       method: 'POST',
       data: $(this).serialize(),
       success: function (response) {
-        Swal.fire({
-          title: 'Success!',
-          text: 'Your data has been submitted successfully.',
-          icon: 'success',
-          confirmButtonText: 'OK'
-        }).then(function () {
-          console.log(response);
-          $('#email-form')[0].reset();
-          // Do something on success
-          // Redirect to a different page or do something else
-          // after the user clicks "OK"
-          $("#Modal-Account").css("display", "none");
-        });
+        if (response == "Data inserted successfully")
+        {
+          Swal.fire({
+            title: 'Success!',
+            text: 'Your data has been submitted successfully.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          }).then(function () {
+            console.log(response);
+            $('#email-form')[0].reset();
+            // Do something on success
+            // Redirect to a different page or do something else
+            // after the user clicks "OK"
+            $("#Modal-Account").css("display", "none");
+          });
+        }
+        else
+        {
+          console.log(textStatus, errorThrown);
+          // Do something on error
+          Swal.fire({
+            title: 'Error!',
+            text: 'There was an error submitting your data.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.log(textStatus, errorThrown);
@@ -86,7 +100,19 @@ function toMainPage() {
     url: '../PHP/checkLogin.php',
     data: { username: username, password: password },
     success: function (response) {
-      if (response === 'success') {
+      if (response === 'success1') {
+        var temp = response;
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your Valid Credentials',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(function () {
+          window.location.href = '../PHP/approveUser.php';
+        });
+      }
+      else if (response === 'success2')
+      {
         var temp = response;
         Swal.fire({
           title: 'Success!',
@@ -96,7 +122,20 @@ function toMainPage() {
         }).then(function () {
           window.location.href = '../PHP/Main.php';
         });
-      } else {
+      }
+      else if (response === 'success3')
+      {
+        var temp = response;
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your Valid Credentials',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(function () {
+          window.location.href = '../PHP/Main.php';
+        });
+      }
+      else {
         var temp = response;
         Swal.fire({
           title: 'MASALAH DUNIA!',
