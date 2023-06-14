@@ -7,6 +7,17 @@ if (!$conn) {
     die('Connection failed: ' . mysqli_connect_error());
 }
 
+function generateRandomPhrase() {
+    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    $phrase = '';
+
+    for ($i = 0; $i < 6; $i++) {
+        $randomIndex = mt_rand(0, strlen($characters) - 1);
+        $phrase .= $characters[$randomIndex];
+    }
+
+    return $phrase;
+}
 
 $date = $_POST["sales_date"];
 $customer_id = $_POST["customer_id"];
@@ -20,11 +31,12 @@ $tax = $_POST["tax"];
 $address = $_POST["shipping_address"];
 $order_status = $_POST["order_status"];
 $payment_status = $_POST["payment_status"];
+$salesRef = generateRandomPhrase();
 
 
-$sql = "INSERT INTO CarSales (sales_date, customer_id, product_id, quantity,total_price, salesperson_id, payment_method, discount, tax, shipping_address, order_status, payment_status)
-VALUES ('$date', '$customer_id', $product_id, $quantity, $total_price, '$salesperson_id', '$payment_method', $discount, $tax, '$address', '$order_status', '$payment_method');";
 
+$sql = "INSERT INTO CarSales (sales_date, customer_id, product_id, quantity,total_price, salesperson_id, payment_method, discount, tax, shipping_address, order_status, payment_status, salesRef)
+VALUES ('$date', '$customer_id', $product_id, $quantity, $total_price, '$salesperson_id', '$payment_method', $discount, $tax, '$address', '$order_status', '$payment_method', '$salesRef');";
 if (mysqli_query($conn, $sql)) {
     echo "Data inserted successfully";
 } else {

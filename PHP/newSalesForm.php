@@ -381,7 +381,7 @@ function displayCurrentDateTime()
                                     die('Connection failed: ' . mysqli_connect_error());
                                 }
 
-                                $query = "SELECT * FROM inventory WHERE delStat <> 1";
+                                $query = "SELECT * FROM inventory WHERE delStat <> 1 ORDER BY Make ASC";
                                 $result = mysqli_query($conn, $query);
                                 $intCount = 0;
                                 $product = "";
@@ -418,7 +418,12 @@ function displayCurrentDateTime()
 
                             <div class="form-group">
                                 <label for="payment_method">Payment Method:</label>
-                                <input type="text" id="payment_method" name="payment_method" required>
+                                <select name="payment_method" id="payment_method">
+                                    <option value="">Select a product</option>
+                                    <option value="">Cash</option>
+                                    <option value="">Credit</option>
+                                    <option value="">Paypal</option>
+                                </select >
                             </div>
 
                             <div class="form-group">
@@ -438,12 +443,28 @@ function displayCurrentDateTime()
 
                             <div class="form-group">
                                 <label for="order_status">Order Status:</label>
-                                <input type="text" id="order_status" name="order_status" required>
+                                <select name="order_status" id="order_status">
+                                    <option value="">Select a product</option>
+                                    <option value="">Pending</option>
+                                    <option value="">Shipped</option>
+                                    <option value="">Delivered</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="payment_status">Payment Status:</label>
-                                <input type="text" id="payment_status" name="payment_status" required>
+                                <select name="payment_status" id="payment_status">
+                                    <option value="">Select a product</option>
+                                    <option value="">Pending</option>
+                                    <option value="">Paid</option>
+                                    <option value="">Cash</option>
+                                    <option value="">Credit</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group-Remarks">
+                                <label for="payment_status">Remarks:</label>
+                                <input type="text" id="remarks" name="remarks" required>
                             </div>
 
                             <input type="submit" value="Register Sale">
@@ -459,7 +480,7 @@ function displayCurrentDateTime()
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; FYP CSMS 2023</span>
                     </div>
                 </div>
             </footer>
