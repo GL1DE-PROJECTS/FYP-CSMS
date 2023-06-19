@@ -48,6 +48,12 @@ select {
     padding-right: 10px;
 }
 
+.form-group-Remarks{
+    flex-basis: 50%;
+    padding-right: 10px;
+    width: 150%;
+}
+
 input[type="submit"] {
     background-color: #4CAF50;
     color: #ffffff;

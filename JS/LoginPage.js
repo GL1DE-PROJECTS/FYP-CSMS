@@ -45,7 +45,7 @@ $(document).ready(function () {
   $('#email-form').submit(function (e) {
     e.preventDefault();
     $.ajax({
-      url: '../PHP/register.php',
+      url: './PHP/register.php',
       method: 'POST',
       data: $(this).serialize(),
       success: function (response) {
@@ -97,10 +97,11 @@ function toMainPage() {
 
   $.ajax({
     type: 'POST',
-    url: '../PHP/checkLogin.php',
+    url: './PHP/checkLogin.php',
     data: { username: username, password: password },
     success: function (response) {
       if (response === 'success1') {
+        console.log(response);
         var temp = response;
         Swal.fire({
           title: 'Success!',
@@ -108,11 +109,12 @@ function toMainPage() {
           icon: 'success',
           confirmButtonText: 'OK'
         }).then(function () {
-          window.location.href = '../PHP/approveUser.php';
+          window.location.href = './PHP/approveUser.php';
         });
       }
       else if (response === 'success2')
       {
+        console.log(response);
         var temp = response;
         Swal.fire({
           title: 'Success!',
@@ -120,11 +122,12 @@ function toMainPage() {
           icon: 'success',
           confirmButtonText: 'OK'
         }).then(function () {
-          window.location.href = '../PHP/Main.php';
+          window.location.href = './PHP/Main.php';
         });
       }
       else if (response === 'success3')
       {
+        console.log(response);
         var temp = response;
         Swal.fire({
           title: 'Success!',
@@ -132,10 +135,11 @@ function toMainPage() {
           icon: 'success',
           confirmButtonText: 'OK'
         }).then(function () {
-          window.location.href = '../PHP/Main.php';
+          window.location.href = './PHP/Main.php';
         });
       }
       else {
+        console.log(response);
         var temp = response;
         Swal.fire({
           title: 'MASALAH DUNIA!',

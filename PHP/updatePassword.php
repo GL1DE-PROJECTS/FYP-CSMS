@@ -13,7 +13,7 @@
     $new = $_POST["newPass"];
     $conf = $_POST["confPass"];
 
-    $strsql = "SELECT * FROM Users WHERE password = $old AND id = $id";
+    $strsql = "SELECT * FROM users WHERE password = $old AND id = $id";
     $result = mysqli_query($conn, $strsql);
     $rows = mysqli_fetch_assoc($result);
 
@@ -27,7 +27,7 @@
             }
             ob_clean();
             echo "success";
-            $stmt = $conn->prepare("UPDATE Users 
+            $stmt = $conn->prepare("UPDATE users 
             SET password = ? WHERE id = $id");
             $stmt->bind_param("s", $new);
 

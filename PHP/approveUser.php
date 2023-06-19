@@ -2,7 +2,7 @@
     session_start();
 
     if ($_SESSION["Login"] != "YES")
-        header("Location: ../html/index.html");
+        header("Location: ../index.html");
 
     function displayCurrentDateTime() {
         $currentDateTime = date('Y-m-d');
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../CSS/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -46,7 +46,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -55,15 +55,6 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            
-            <li class="nav-item">
-                <a class="nav-link" href="../PHP/getInventory.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>View User</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -275,7 +266,7 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="../PHP/userSettings.php">
+                                <a class="dropdown-item" href="../PHP/userSetting_level_1.php">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
@@ -443,7 +434,7 @@
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
+    <script src="../JS/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
     <script src="../vendor/chart.js/Chart.min.js"></script>

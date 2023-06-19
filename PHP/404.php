@@ -2,7 +2,7 @@
     session_start();
 
     if ($_SESSION["Login"] != "YES")
-        header("Location: ../html/index.html");
+        header("Location: ../index.html");
 
     function displayCurrentDateTime() {
         $currentDateTime = date('Y-m-d');
@@ -30,7 +30,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../CSS/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -441,7 +441,7 @@
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
+    <script src="../JS/sb-admin-2.min.js"></script>
     
     <script src="../JS/logout.js"></script>
 

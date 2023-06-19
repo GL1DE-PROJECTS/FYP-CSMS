@@ -14,7 +14,7 @@
     $phone = $_POST["phone"];
     $position = $_POST["position"];
 
-    $stmt = $conn->prepare("UPDATE Users 
+    $stmt = $conn->prepare("UPDATE users 
     SET name = ?, Last_Name = ?, email = ?, phone = ?,position = ? WHERE id = ?");
     $stmt->bind_param("sssssi", $name, $lname, $email, $phone,$position,$id);
 

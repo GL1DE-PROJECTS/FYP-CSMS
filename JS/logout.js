@@ -29,7 +29,7 @@ function logout() {
             icon: 'success',
             confirmButtonText: 'OK'
           }).then(function () {
-            window.location.href = '../html/index.html';
+            window.location.href = '../index.html';
           });
         } else {
           var temp = response;

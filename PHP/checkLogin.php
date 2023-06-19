@@ -14,7 +14,7 @@
     $password = $_POST["password"];
 
 
-    $strSql = "SELECT * FROM Users WHERE name = '$username' AND password = '$password' AND delstat <> 1";
+    $strSql = "SELECT * FROM users WHERE name = '$username' AND password = '$password' AND delstat <> 1 AND status = 1";
     $result = mysqli_query($conn, $strSql);
     $rows = mysqli_fetch_assoc($result);
     if($result)
@@ -61,6 +61,7 @@
     else
     {
         mysqli_close($conn);
+        echo $result." ".$strSql;
         die('Query failed: ' . mysqli_error($conn));
     }
 ?>

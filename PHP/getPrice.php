@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SESSION["Login"] != "YES")
-    header("Location: ../html/index.html");
+    header("Location: ../index.html");
 
 function displayCurrentDateTime()
 {
@@ -24,7 +24,7 @@ if (!$conn) {
 for ($month = 1; $month <= 12; $month++) {
     // SQL query to fetch the total sales for each month
     $sql = "SELECT SUM(total_price) AS total_sales
-            FROM CarSales
+            FROM carsales
             WHERE MONTH(sales_date) = $month";
 
     // Execute the query
