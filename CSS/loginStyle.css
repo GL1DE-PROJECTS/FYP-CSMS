@@ -73,6 +73,7 @@ body {
 .box-form .right {
   padding: 40px;
   overflow: hidden;
+  margin-right: 145px;
 }
 @media (max-width: 980px) {
   .box-form .right {
@@ -193,7 +194,7 @@ body {
 	margin: auto;
 	border: 1px solid #888;
 	width: 534px; /* added this to limit the width of the modal */
-	height: 737px; /* added this to limit the height of the modal */
+	height: 760px; /* added this to limit the height of the modal */
 	overflow-y: auto; /* added this to enable vertical scrolling if needed */
 	display: flex; /* added this to center the content vertically */
 	flex-direction: column; /* added this to stack the content vertically */
@@ -266,10 +267,31 @@ form .input-box input{
   border-radius: 6px;
   transition: all 0.3s ease;
 }
+
+form .input-box select{
+  height: 100%;
+  width: 107%;
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: 1.5px solid #C7BEBE;
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
 .input-box input:focus,
 .input-box input:valid{
   border-color: #4070f4;
 }
+
+.input-box select:focus,
+.input-box select:valid{
+  border-color: #4070f4;
+}
+
 form .policy{
   display: flex;
   align-items: center;

@@ -1,3 +1,21 @@
+// Call the dataTables jQuery plugin
+$(document).ready(function () {//#region Modal Create Account
+  $("#myBtn").click(function () {
+    $("#Modal-Account").css("display", "block");
+  });
+
+  $(".close").click(function () {
+    $("#Modal-Account").css("display", "none");
+  });
+
+  $(window).click(function (event) {
+    if (event.target == document.getElementById("myModal")) {
+      $("#Modal-Account").css("display", "none");
+    }
+  });
+  //#endregion
+});
+
 function logout() {
     $.ajax({
       type: 'POST',
@@ -11,7 +29,7 @@ function logout() {
             icon: 'success',
             confirmButtonText: 'OK'
           }).then(function () {
-            window.location.href = '../html/index.html';
+            window.location.href = '../index.html';
           });
         } else {
           var temp = response;

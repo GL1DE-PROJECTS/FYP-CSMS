@@ -1,13 +1,14 @@
 <?php
-    session_start();
+session_start();
 
-    if ($_SESSION["Login"] != "YES")
-        header("Location: ../index.html");
+if ($_SESSION["Login"] != "YES")
+    header("Location: ../index.html");
 
-    function displayCurrentDateTime() {
-        $currentDateTime = date('Y-m-d');
-        echo "Current date: $currentDateTime";
-        }
+function displayCurrentDateTime()
+{
+    $currentDateTime = date('Y-m-d');
+    echo "Current date: $currentDateTime";
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,17 +22,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FYP-CSMS -Color Utilities</title>
+    <title>FYP-CSMS -Charts</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.4/sweetalert2.min.css"/>
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.4/sweetalert2.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 
     <!-- Custom styles for this template-->
     <link href="../CSS/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../CSS/newSales.css" rel="stylesheet">
 
 </head>
 
@@ -64,74 +66,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="../PHP/buttons.php">Buttons</a>
-                        <a class="collapse-item" href="../PHP/cards.php">Cards</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item active" href="../PHP/utilities-color.php">Colors</a>
-                        <a class="collapse-item" href="../PHP/utilities-border.php">Borders</a>
-                        <a class="collapse-item" href="../PHP/utilities-animation.php">Animations</a>
-                        <a class="collapse-item" href="../PHP/utilities-other.php">Other</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="../PHP/login.php">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="../PHP/forgot-password.php">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="../PHP/404.php">404 Page</a>
-                        <a class="collapse-item" href="../PHP/blank.php">Blank Page</a>
-                    </div>
-                </div>
-            </li>
+              
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
@@ -146,12 +81,30 @@
                     <span>Sales</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="../PHP/getInventory.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
+            <?php
+                if ($_SESSION["Level"] != 2)
+                {
+                    ?>
+                        <!-- Nav Item - Tables -->
+                        <li class="nav-item" hidden>
+                            <a class="nav-link" href="../PHP/getInventory.php">
+                                <i class="fas fa-fw fa-table"></i>
+                                <span>Tables</span></a>
+                        </li>
+                    <?php
+                }
+                else
+                {
+                    ?>
+                        <!-- Nav Item - Tables -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="../PHP/getInventory.php">
+                                <i class="fas fa-fw fa-table"></i>
+                                <span>Tables</span></a>
+                        </li>
+                    <?php
+                }
+            ?>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -179,11 +132,9 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -197,18 +148,14 @@
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -221,15 +168,13 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alerts Center
                                 </h6>
@@ -272,22 +217,19 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -298,8 +240,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -310,8 +251,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -322,8 +262,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -340,15 +279,12 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -376,99 +312,123 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800">Color Utilities</h1>
-                    <p class="mb-4">Bootstrap's default utility classes can be found on the official <a
-                            href="https://getbootstrap.com/docs">Bootstrap Documentation</a> page. The custom utilities
-                        below were created to extend this theme past the default utility classes built into Bootstrap's
-                        framework.</p>
-
                     <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- First Column -->
-                        <div class="col-lg-4">
-
-                            <!-- Custom Text Color Utilities -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Custom Text Color Utilities</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p class="text-gray-100 p-3 bg-dark m-0">.text-gray-100</p>
-                                    <p class="text-gray-200 p-3 bg-dark m-0">.text-gray-200</p>
-                                    <p class="text-gray-300 p-3 bg-dark m-0">.text-gray-300</p>
-                                    <p class="text-gray-400 p-3 bg-dark m-0">.text-gray-400</p>
-                                    <p class="text-gray-500 p-3 m-0">.text-gray-500</p>
-                                    <p class="text-gray-600 p-3 m-0">.text-gray-600</p>
-                                    <p class="text-gray-700 p-3 m-0">.text-gray-700</p>
-                                    <p class="text-gray-800 p-3 m-0">.text-gray-800</p>
-                                    <p class="text-gray-900 p-3 m-0">.text-gray-900</p>
-                                </div>
+                    <div>
+                        <h2>Sales Registration Form</h2>
+                        <form action="insert_sales.php" method="POST" id="newSales">
+                            <div class="form-group">
+                                <label for="sales_date">Sales Date:</label>
+                                <input type="datetime-local" id="sales_date" name="sales_date" required>
                             </div>
 
-                            <!-- Custom Font Size Utilities -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Custom Font Size Utilities</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p class="text-xs">.text-xs</p>
-                                    <p class="text-lg mb-0">.text-lg</p>
-                                </div>
+                            <div class="form-group">
+                                <label for="customer_id">Customer ID:</label>
+                                <input type="text" id="customer_id" name="customer_id" required>
                             </div>
 
-                        </div>
+                            <div class="form-group">
+                                <label for="product_id">Product ID:</label>
+                                <?php
+                                require("config.php");
 
-                        <!-- Second Column -->
-                        <div class="col-lg-4">
+                                if (!$conn) {
+                                    echo 'failure';
+                                    die('Connection failed: ' . mysqli_connect_error());
+                                }
 
-                            <!-- Background Gradient Utilities -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Custom Background Gradient Utilities
-                                    </h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="px-3 py-5 bg-gradient-primary text-white">.bg-gradient-primary</div>
-                                    <div class="px-3 py-5 bg-gradient-secondary text-white">.bg-gradient-secondary</div>
-                                    <div class="px-3 py-5 bg-gradient-success text-white">.bg-gradient-success</div>
-                                    <div class="px-3 py-5 bg-gradient-info text-white">.bg-gradient-info</div>
-                                    <div class="px-3 py-5 bg-gradient-warning text-white">.bg-gradient-warning</div>
-                                    <div class="px-3 py-5 bg-gradient-danger text-white">.bg-gradient-danger</div>
-                                    <div class="px-3 py-5 bg-gradient-light text-white">.bg-gradient-light</div>
-                                    <div class="px-3 py-5 bg-gradient-dark text-white">.bg-gradient-dark</div>
-                                </div>
+                                $query = "SELECT * FROM inventory WHERE delStat <> 1 ORDER BY Make ASC";
+                                $result = mysqli_query($conn, $query);
+                                $intCount = 0;
+                                $product = "";
+                                ?>
+                                <select id="product_id" name="product_id" required>
+                                        <option value="">Select a product</option>
+                                    <?php
+                                    while ($rows = mysqli_fetch_assoc($result)) {
+                                        $product = $rows["Make"] . " " . $rows["Model"] . " " . $rows["chasis"];
+                                    ?>
+                                        <option value=<?php echo $rows["ID"]; ?> style="font-weight: bold"><?php echo $product; ?></option>
+                                    <?php
+                                        $intCount++;
+                                    }
+                                    mysqli_close($conn);
+                                    ?>
+                                </select>
                             </div>
 
-                        </div>
-
-                        <!-- Third Column -->
-                        <div class="col-lg-4">
-
-                            <!-- Grayscale Utilities -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Custom Grayscale Background Utilities
-                                    </h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="p-3 bg-gray-100">.bg-gray-100</div>
-                                    <div class="p-3 bg-gray-200">.bg-gray-200</div>
-                                    <div class="p-3 bg-gray-300">.bg-gray-300</div>
-                                    <div class="p-3 bg-gray-400">.bg-gray-400</div>
-                                    <div class="p-3 bg-gray-500 text-white">.bg-gray-500</div>
-                                    <div class="p-3 bg-gray-600 text-white">.bg-gray-600</div>
-                                    <div class="p-3 bg-gray-700 text-white">.bg-gray-700</div>
-                                    <div class="p-3 bg-gray-800 text-white">.bg-gray-800</div>
-                                    <div class="p-3 bg-gray-900 text-white">.bg-gray-900</div>
-                                </div>
+                            <div class="form-group">
+                                <label for="quantity">Quantity:</label>
+                                <input type="number" id="quantity" name="quantity" required>
                             </div>
-                        </div>
 
+                            <div class="form-group">
+                                <label for="total_price">Total Price:</label>
+                                <input type="number" step="0.01" id="total_price" name="total_price" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="salesperson_id">Salesperson ID:</label>
+                                <input type="text" id="salesperson_id" name="salesperson_id" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="payment_method">Payment Method:</label>
+                                <select name="payment_method" id="payment_method">
+                                    <option value="">Select a product</option>
+                                    <option value="">Cash</option>
+                                    <option value="">Credit</option>
+                                    <option value="">Paypal</option>
+                                </select >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="discount">Discount:</label>
+                                <input type="number" step="0.01" id="discount" name="discount" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tax">Tax:</label>
+                                <input type="number" step="0.01" id="tax" name="tax" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="shipping_address">Shipping Address:</label>
+                                <input type="text" id="shipping_address" name="shipping_address" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="order_status">Order Status:</label>
+                                <select name="order_status" id="order_status">
+                                    <option value="">Select a product</option>
+                                    <option value="">Pending</option>
+                                    <option value="">Shipped</option>
+                                    <option value="">Delivered</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="payment_status">Payment Status:</label>
+                                <select name="payment_status" id="payment_status">
+                                    <option value="">Select a product</option>
+                                    <option value="">Pending</option>
+                                    <option value="">Paid</option>
+                                    <option value="">Cash</option>
+                                    <option value="">Credit</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group-Remarks">
+                                <label for="payment_status">Remarks:</label>
+                                <input type="text" id="remarks" name="remarks" required>
+                            </div>
+
+                            <div class="form-group">
+                                
+                            </div>
+
+                            <input type="submit" value="Register Sale" >
+                        </form>
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
 
@@ -497,8 +457,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -525,9 +484,18 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../JS/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../JS/Sales.js"></script>
     <script src="../JS/logout.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.4/sweetalert2.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
 </body>
 

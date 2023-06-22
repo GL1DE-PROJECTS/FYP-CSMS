@@ -1,39 +1,42 @@
-$(document).ready(function (){
-    
+$(document).ready(function () {
     $('#myTable').DataTable();
 
-    $('#inventory-form').submit(function (e) {
+    $('#newSales').submit(function (e) {
         e.preventDefault();
         $.ajax({
-          url: '../PHP/insertInventory.php',
-          method: 'POST',
-          data: $(this).serialize(),
-          success: function (response) {
-            Swal.fire({
-              title: 'Success!',
-              text: 'Your data has been submitted successfully.',
-              icon: 'success',
-              confirmButtonText: 'OK'
-            }).then(function () {
-              console.log(response);
-              $('#inventory-form')[0].reset();
-              $("#Modal-Account").css("display", "none");
-              location.reload();
-            });
-          },
-          error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus, errorThrown);
-            // Do something on error
-            Swal.fire({
-              title: 'Error!',
-              text: 'There was an error submitting your data.',
-              icon: 'error',
-              confirmButtonText: 'OK'
-            });
-          }
+            url: '../PHP/insert_sales.php',
+            method: 'POST',
+            data: $(this).serialize(),
+            success: function (response) {
+                console.log(response);
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Your data has been submitted successfully.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(function () {
+                    $('#newSales')[0].reset();
+                    // Do something on success
+                    // Redirect to a different page or do something else
+                    // after the user clicks "OK"
+                    $("#Modal-Account").css("display", "none");
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+                // Do something on error
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'There was an error submitting your data.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
         });
-      });
+    });
 });
+
+
 
 function deleteRow(button) {
     Swal.fire({
@@ -75,7 +78,7 @@ function deleteRow(button) {
                     }
                 }
             };
-            xhttp.open("GET", "../PHP/deleteInv.php?id=" + encodeURIComponent(ID), true);
+            xhttp.open("GET", "../PHP/delSales.php?id=" + encodeURIComponent(ID), true);
             xhttp.send();
         } else if (result.dismiss === Swal.DismissReason.cancel) {
             Swal.fire('Cancelled', 'The deletion has been cancelled.', 'error');

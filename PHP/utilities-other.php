@@ -2,7 +2,7 @@
     session_start();
 
     if ($_SESSION["Login"] != "YES")
-        header("Location: ../html/index.html");
+        header("Location: ../index.html");
 
     function displayCurrentDateTime() {
         $currentDateTime = date('Y-m-d');
@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Other Utilities</title>
+    <title>FYP-CSMS -Other Utilities</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,7 +31,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../CSS/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -48,7 +48,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">FYP CSMS</div>
             </a>
 
             <!-- Divider -->
@@ -56,7 +56,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="../PHP/Main.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -138,6 +138,12 @@
                 <a class="nav-link" href="../PHP/charts.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="../PHP/Sales.php">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Sales</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
@@ -467,7 +473,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; FYP CSMS 2023</span>
                     </div>
                 </div>
             </footer>
@@ -512,7 +518,7 @@
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
+    <script src="../JS/sb-admin-2.min.js"></script>
     <script src="../JS/logout.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.4/sweetalert2.min.js"></script>
