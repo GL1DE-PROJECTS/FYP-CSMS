@@ -327,8 +327,8 @@ function displayCurrentDateTime()
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
                                 </div>
-                                <div class="card-body">
-                                    <div class="chart-area">
+                                <div class="card-body" style="height: 536px;">
+                                    <div class="chart-area" style="height: 27rem;">
                                         <!-- <div id="myAreaChart"></div> -->
                                         <canvas id="myAreaChart"></canvas>
                                     </div>
@@ -364,13 +364,16 @@ function displayCurrentDateTime()
                                     <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4">
+                                <div class="card-body" style="height: 536px;">
+                                    <div class="chart-pie pt-4" style="margin-top: 72px;">
                                         <canvas id="myPieChart"></canvas>
                                     </div>
-                                    <hr>
-                                    Styling for the donut chart can be found in the
-                                    <code>/js/demo/chart-pie-demo.js</code> file.
+                                    <div id="pie" style="margin-top: 97px;">
+                                        <hr>
+                                        Styling for the donut chart can be found in the
+                                        <code>/js/demo/chart-pie-demo.js</code> file.
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

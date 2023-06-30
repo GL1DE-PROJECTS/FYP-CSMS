@@ -13,7 +13,7 @@ $(document).ready(function () {
               confirmButtonText: 'OK'
             }).then(function () {
               console.log(response);
-              $('#email-form')[0].reset();
+              $('#userForm')[0].reset();
               // Do something on success
               // Redirect to a different page or do something else
               // after the user clicks "OK"
