@@ -1,4 +1,10 @@
 <?php
+    function getHash($strVal)
+    {
+        $hashedString = hash('sha256', $strVal);
+        return $hashedString;
+    }
+
     session_start();
     require("config.php");
 
@@ -11,7 +17,7 @@
     // $password = str_replace("'","''", $_POST["password"]);
 
     $username = $_POST["username"];
-    $password = $_POST["password"];
+    $password = getHash($_POST["password"]);
 
 
     $strSql = "SELECT * FROM users WHERE name = '$username' AND password = '$password' AND delstat <> 1 AND status = 1";
@@ -25,7 +31,7 @@
             {
                 mysqli_close($conn);
                 ob_clean();
-                echo "fail";
+                echo $password;
                 exit;
             }
             else if ($rows["Level"] == 1)
@@ -55,13 +61,13 @@
         {
             mysqli_close($conn);
             ob_clean();
-            echo "fail";
+            echo $password;
         }
     }
     else
     {
         mysqli_close($conn);
-        echo $result." ".$strSql;
+        echo $result." ".$strSql.$password;
         die('Query failed: ' . mysqli_error($conn));
     }
 ?>

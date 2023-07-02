@@ -1,4 +1,11 @@
 <?php
+
+    function getHash($strVal)
+    {
+        $hashedString = hash('sha256', $strVal);
+        return $hashedString;
+    }
+
     // Database connection
     require("config.php");
 
@@ -20,9 +27,10 @@
     // Get the form data
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = getHash($_POST['password']);
     $level = $data[$_POST["position"]][0];
     $position = $data[$_POST["position"]][1];
+
 
     // Insert the data into the database
     $sql = "INSERT INTO users (name, email, password, Level, status, position, delStat) VALUES ('$name', '$email', '$password', $level, 0, '$position', 0)";

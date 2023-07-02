@@ -114,13 +114,30 @@ if ($result) {
                     <span>Sales</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="../PHP/getInventory.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
-
+            <?php
+                if ($_SESSION["Level"] == 2)
+                {
+                    ?>         
+                        <!-- Nav Item - Tables -->
+                        <li class="nav-item" hidden>
+                            <a class="nav-link" href="../PHP/getInventory.php">
+                                <i class="fas fa-fw fa-table"></i>
+                                <span>Tables</span></a>
+                        </li>
+                    <?php
+                }
+                else
+                {
+                    ?>       
+                    <!-- Nav Item - Tables -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../PHP/getInventory.php">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Tables</span></a>
+                    </li>
+                    <?php
+                }
+            ?>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

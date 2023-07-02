@@ -83,7 +83,7 @@ function displayCurrentDateTime()
             </li>
 
             <?php
-            if ($_SESSION["Level"] != 2) {
+            if ($_SESSION["Level"] == 2) {
             ?> <!-- Nav Item - Tables -->
                 <li class="nav-item" hidden>
                     <a class="nav-link" href="../PHP/getInventory.php">

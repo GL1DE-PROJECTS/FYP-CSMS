@@ -1,5 +1,11 @@
 <?php
 
+    function getHash($strVal)
+    {
+        $hashedString = hash('sha256', $strVal);
+        return $hashedString;
+    }
+
     session_start();
     require("config.php");
 
@@ -9,9 +15,9 @@
     }
 
     $id = $_SESSION["ID"];
-    $old = $_POST["oldPass"];
-    $new = $_POST["newPass"];
-    $conf = $_POST["confPass"];
+    $old = getHash($_POST["oldPass"]);
+    $new = getHash($_POST["newPass"]);
+    $conf = getHash($_POST["confPass"]);
 
     $strsql = "SELECT * FROM users WHERE password = $old AND id = $id";
     $result = mysqli_query($conn, $strsql);

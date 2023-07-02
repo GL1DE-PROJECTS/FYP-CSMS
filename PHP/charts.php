@@ -80,7 +80,7 @@ function displayCurrentDateTime()
             </li>
 
             <?php
-                if ($_SESSION["Level"] != 2)
+                if ($_SESSION["Level"] == 2)
                 {
                     ?>
                         <!-- Nav Item - Tables -->
