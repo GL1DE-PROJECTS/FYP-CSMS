@@ -8,6 +8,49 @@
         $currentDateTime = date('Y-m-d');
         echo "Current date: $currentDateTime";
         }
+        
+require("config.php");
+
+if (!$conn) {
+    echo 'failure';
+    die('Connection failed: ' . mysqli_connect_error());
+}
+
+$id = $_SESSION["ID"];
+
+$strsql = "SELECT * FROM users Where id = $id";
+echo $strsql;
+$result = mysqli_query($conn, $strsql);
+$rows = mysqli_fetch_assoc($result);
+
+if ($result) {
+    if (mysqli_num_rows($result) == 1) {
+        mysqli_close($conn);
+        ob_clean();
+        $name = $rows["name"];
+        $email = $rows["email"];
+        $password = $rows["password"];
+        $phone = $rows["phone"];
+        if($phone == null || $phone == "")
+        {
+            $phone = "NA";
+        }
+        $lname = $rows["Last_Name"];
+        if($lname == null || $lname == "")
+        {
+            $lname = "NA";
+        }
+        $pos = $rows["position"];
+        $fullname = $name . " " . $lname;
+    } else {
+        mysqli_close($conn);
+        ob_clean();
+        echo "fail";
+    }
+} else {
+    mysqli_close($conn);
+    die('Query failed: ' . mysqli_error($conn));
+}
 ?>
 
 <!DOCTYPE html>
@@ -342,7 +385,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $fullname  ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>

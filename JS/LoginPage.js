@@ -17,6 +17,8 @@ $(document).ready(function () {
 
     $(".close").click(function () {
         $("#Modal-Account").css("display", "none");
+        $('#email-form')[0].reset();
+        $('#recoverPass')[0].reset();
     });
 
     $(window).click(function (event) {
@@ -89,7 +91,68 @@ $(document).ready(function () {
       }
     });
   });
+
+  $('#recoverPass').submit(function (e) {
+    e.preventDefault();
+    $.ajax({
+      url: './PHP/recoverPass.php',
+      method: 'POST',
+      data: $(this).serialize(),
+      success: function (response) {
+        if (response == "success")
+        {
+          Swal.fire({
+            title: 'Success!',
+            text: 'Your data has been submitted successfully.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          }).then(function () {
+            console.log(response);
+            $('#recoverPass')[0].reset();
+            // Do something on success
+            // Redirect to a different page or do something else
+            // after the user clicks "OK"
+            $("#Modal-Account").css("display", "none");
+          });
+        }
+        else if(response == "No user")
+        {
+          console.log(response);
+          // Do something on error
+          Swal.fire({
+            title: 'Error!',
+            text: 'No user found with the username/email',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+        else
+        {
+          console.log(response);
+          // Do something on error
+          Swal.fire({
+            title: 'Error!',
+            text: 'There was an error submitting your data.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+        // Do something on error
+        Swal.fire({
+          title: 'Error!',
+          text: 'There was an error submitting your data.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
+    });
+  });
 });
+
+
 
 function toMainPage() {
   var username = $('input[type="text"]').val();

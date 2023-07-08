@@ -32,7 +32,15 @@ if ($result) {
         $email = $rows["email"];
         $password = $rows["password"];
         $phone = $rows["phone"];
+        if($phone == null || $phone == "")
+        {
+            $phone = "NA";
+        }
         $lname = $rows["Last_Name"];
+        if($lname == null || $lname == "")
+        {
+            $lname = "NA";
+        }
         $pos = $rows["position"];
         $fullname = $name . " " . $lname;
     } else {
@@ -417,13 +425,7 @@ if ($result) {
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Position</label>
-                                                            <input type="text" class="form-control" value=<?php echo $pos ?> name="position">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label>Bio</label>
-                                                            <textarea class="form-control" rows="4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore vero enim error similique quia numquam ullam corporis officia odio repellendus aperiam consequatur laudantium porro voluptatibus, itaque laboriosam veritatis voluptatum distinctio!</textarea>
+                                                            <input type="text" class="form-control" value=<?php echo $pos ?> name="position" readonly>
                                                         </div>
                                                     </div>
                                             </div>
