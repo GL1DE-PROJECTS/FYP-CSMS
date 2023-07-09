@@ -101,7 +101,7 @@ function deleteRow(button) {
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     // If the deletion is successful, remove the row from the table
-                    if (this.responseText === "success") {
+                    if (this.responseText === "successsuccess") {
                         Swal.fire({
                             title: 'Success!',
                             text: 'Your data has been deleted successfully.',

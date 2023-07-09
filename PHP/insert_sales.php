@@ -35,12 +35,23 @@ $salesRef = generateRandomPhrase();
 
 
 
-$sql = "INSERT INTO CarSales (sales_date, customer_id, product_id, quantity,total_price, salesperson_id, payment_method, discount, tax, shipping_address, order_status, payment_status, salesRef)
-VALUES ('$date', '$customer_id', $product_id, $quantity, $total_price, '$salesperson_id', '$payment_method', $discount, $tax, '$address', '$order_status', '$payment_method', '$salesRef');";
+$sql = "INSERT INTO carsales (sales_date, customer_id, product_id, quantity,total_price, salesperson_id, payment_method, discount, tax, shipping_address, order_status, payment_status, delStat, salesRef)
+VALUES ('$date', '$customer_id', $product_id, $quantity, $total_price, '$salesperson_id', '$payment_method', $discount, $tax, '$address', '$order_status', '$payment_method', 0, '$salesRef');";
 if (mysqli_query($conn, $sql)) {
     echo "Data inserted successfully";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+$stmt = $conn->prepare("UPDATE inventory 
+SET Status = 'Unavailable' WHERE id = $product_id");
+
+if ($stmt->execute()) {
+    // Update successful
+    echo "success";
+} else {
+    // Update failed
+    echo "failure";
 }
 
 // Close the database connection
