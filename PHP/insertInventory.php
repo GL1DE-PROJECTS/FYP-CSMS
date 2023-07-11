@@ -14,11 +14,15 @@
     $Color = $_POST["Color"];
     $Mileage = $_POST["Mileage"];
     $Condition = $_POST["Condition"];
-    $Location = $_POST["Location"];
+    $Origin = $_POST["Origin"];
     $Status = $_POST["Status"];
+    $chasis = $_POST["chasis"];
+    $currency = $_POST["Currency"];
+    $registration = $_POST["Registration"];
 
-    $sql = "INSERT INTO inventory (Make, Model, Year, Price, Color, Mileage, Cond, Location, Status, delStat)
-    VALUES ('$Make', '$Model', $Year, $Price, '$Color', $Mileage, '$Condition', '$Location', '$Status', 0)";
+
+    $sql = "INSERT INTO inventory (Make, Model, Year, Price, Color, Mileage, Cond, Location, chasis, Status, delStat, currencyID, registration)
+    VALUES ('$Make', '$Model', $Year, $Price, '$Color', $Mileage, '$Condition', '$Origin', '$chasis', '$Status', 0, $currency, '$registration')";
 
     if (mysqli_query($conn, $sql)) {
         echo "Data inserted successfully";

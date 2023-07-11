@@ -259,6 +259,7 @@ if ($result) {
                                             <th>Shipping City</th>
                                             <th>Order Status</th>
                                             <th>Payment Status</th>
+                                            <th>Remarks</th>
                                             <th>---</th>
                                         </tr>
                                     </thead>
@@ -290,6 +291,7 @@ if ($result) {
                                                 <td><?php echo $rows["shipping_address"]; ?></td>
                                                 <td><?php echo $rows["order_status"]; ?></td>
                                                 <td><?php echo $rows["payment_status"]; ?></td>
+                                                <td><?php echo $rows["remarks"]; ?></td>
                                                 <td><button class="btnDel" onclick="deleteRow(this)">Delete</button></td>
                                             </tr>
                                         <?php

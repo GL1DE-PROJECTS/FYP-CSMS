@@ -339,10 +339,28 @@ if ($result) {
                                 </select>
                             </div>
 
-                            <div class="form-group-Remarks">
-                                <label for="payment_status">Remarks:</label>
-                                <input type="text" id="remarks" name="remarks" required>
-                            </div>
+                            <?php
+                                if ($_SESSION["Level"] == 2)
+                                {
+                                    ?>
+                                        <!-- Nav Item - Tables -->
+                                        <div class="form-group-Remarks">
+                                            <label for="payment_status">Remarks:</label>
+                                            <input type="text" id="remarks" name="remarks">
+                                        </div>
+                                    <?php
+                                }
+                                else
+                                {
+                                    ?>
+                                        <!-- Nav Item - Tables -->
+                                        <div class="form-group-Remarks">
+                                            <label for="payment_status" hidden>Remarks:</label>
+                                            <input type="text" id="remarks" name="remarks"hidden>
+                                        </div>
+                                    <?php
+                                }
+                            ?>
 
                             <div class="form-group">
                                 

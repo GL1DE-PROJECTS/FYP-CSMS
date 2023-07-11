@@ -31,12 +31,13 @@ $tax = $_POST["tax"];
 $address = $_POST["shipping_address"];
 $order_status = $_POST["order_status"];
 $payment_status = $_POST["payment_status"];
+$remarks = $_POST["remarks"];
 $salesRef = generateRandomPhrase();
 
 
 
-$sql = "INSERT INTO carsales (sales_date, customer_id, product_id, quantity,total_price, salesperson_id, payment_method, discount, tax, shipping_address, order_status, payment_status, delStat, salesRef)
-VALUES ('$date', '$customer_id', $product_id, $quantity, $total_price, '$salesperson_id', '$payment_method', $discount, $tax, '$address', '$order_status', '$payment_method', 0, '$salesRef');";
+$sql = "INSERT INTO carsales (sales_date, customer_id, product_id, quantity,total_price, salesperson_id, payment_method, discount, tax, shipping_address, order_status, payment_status, delStat, salesRef, remarks)
+VALUES ('$date', '$customer_id', $product_id, $quantity, $total_price, '$salesperson_id', '$payment_method', $discount, $tax, '$address', '$order_status', '$payment_method', 0, '$salesRef', '$remarks');";
 if (mysqli_query($conn, $sql)) {
     echo "Data inserted successfully";
 } else {

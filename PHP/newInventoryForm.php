@@ -64,40 +64,18 @@ if ($result) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FYP-CSMS</title>
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+    <title>FYP-CSMS -Charts</title>
 
-    
-    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
-
-    <!-- <script src="../JS/demo/datatables-demo.js"></script> -->
-    <script src="../JS/logout.js"></script>
-    <script src="../JS/inventory.js"></script>
+    <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.4/sweetalert2.min.css" />
-    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 
-    <!-- Custom styles for this template -->
-    <link href="../CSS/sb-admin-2.css" rel="stylesheet">
-    <link href="../CSS/inventoryModal.css" rel="stylesheet">
-
+    <!-- Custom styles for this template-->
+    <link href="../CSS/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../CSS/newInv.css" rel="stylesheet">
 
 </head>
 
@@ -110,7 +88,7 @@ if ($result) {
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -130,7 +108,7 @@ if ($result) {
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-             
+              
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
@@ -145,13 +123,12 @@ if ($result) {
                     <span>Sales</span></a>
             </li>
 
-
             <?php
                 if ($_SESSION["Level"] == 2)
                 {
                     ?>
                         <!-- Nav Item - Tables -->
-                        <li class="nav-item active" hidden>
+                        <li class="nav-item" hidden>
                             <a class="nav-link" href="../PHP/getInventory.php">
                                 <i class="fas fa-fw fa-table"></i>
                                 <span>Tables</span></a>
@@ -162,7 +139,7 @@ if ($result) {
                 {
                     ?>
                         <!-- Nav Item - Tables -->
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="../PHP/getInventory.php">
                                 <i class="fas fa-fw fa-table"></i>
                                 <span>Tables</span></a>
@@ -170,8 +147,6 @@ if ($result) {
                     <?php
                 }
             ?>
-
-            
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -194,11 +169,9 @@ if ($result) {
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <form class="form-inline">
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                    </form>
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
                     <!-- Topbar Search -->
 
@@ -239,17 +212,9 @@ if ($result) {
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
                                 <a class="dropdown-item" href="../PHP/userSettings.php">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -266,82 +231,112 @@ if ($result) {
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">Inventory for car sales encompasses the diverse range of vehicles, representing a dealership's available stock of new and used cars ready to be showcased and sold to customers
-                        For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"><?php displayCurrentDateTime() ?></h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="myTable" class="display">
-                                    <thead>
-                                        <tr>
-                                            <th hidden>ID</th>
-                                            <th>...</th>
-                                            <th>Make</th>
-                                            <th>Model</th>
-                                            <th>Year</th>
-                                            <th>Price</th>
-                                            <th>Color</th>
-                                            <th>Mileage</th>
-                                            <th>Condition</th>
-                                            <th>Location</th>
-                                            <th>Status</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        require("config.php");
-
-                                        if (!$conn) {
-                                            echo 'failure';
-                                            die('Connection failed: ' . mysqli_connect_error());
-                                        }
-
-                                        $query = "SELECT * FROM inventory WHERE delStat <> 1";
-                                        $result = mysqli_query($conn, $query);
-                                        $intCount = 0;
-                                        while ($rows = mysqli_fetch_assoc($result)) {
-                                        ?>
-                                            <tr>
-                                                <td hidden><?php echo $rows["ID"]; ?></td>
-                                                <td><?php echo $intCount + 1 ?></td>
-                                                <td><?php echo $rows["Make"]; ?></td>
-                                                <td><?php echo $rows["Model"]; ?></td>
-                                                <td><?php echo $rows["Year"]; ?></td>
-                                                <td><?php echo $rows["Price"]; ?></td>
-                                                <td><?php echo $rows["Color"]; ?></td>
-                                                <td><?php echo $rows["Mileage"]; ?></td>
-                                                <td><?php echo $rows["Cond"]; ?></td>
-                                                <td><?php echo $rows["Location"]; ?></td>
-                                                <td><?php echo $rows["Status"]; ?></td>
-                                                <td><button class="btnDel" onclick="deleteRow(this)">Delete</button></td>
-                                            </tr>
-                                        <?php
-                                            $intCount++;
-                                        }
-                                        mysqli_close($conn);
-                                        ?>
-                                    </tbody>
-                                </table>
+                    <!-- Content Row -->
+                    <div>
+                        <h2>Sales Registration Form</h2>
+                        <form action="insertInventory.php" method="POST" id="newInventory">
+                            <div class="form-group">
+                                <label for="Make">Make:</label>
+                                <input type="text" id="Make" name="Make" required>
                             </div>
-                        </div>
-                    </div>
-                    <div>
-                        <a id="myBtn" href="../PHP/newInventoryForm.php" class="btn btn-info btn-lg">
-                            <span class="glyphicon glyphicon-plus-sign"></span> New Inventory
-                        </a>
-                    </div>
 
-                    <div>
+                            <div class="form-group">
+                                <label for="Year">Year:</label>
+                                <input type="text" id="Year" name="Year" required>
+                            </div>
 
+                            <div class="form-group">
+                                <label for="Model">Model:</label>
+                                <input type="text" id="Model" name="Model" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Currency">Currency:</label>
+                                <?php
+                                require("config.php");
+
+                                if (!$conn) {
+                                    echo 'failure';
+                                    die('Connection failed: ' . mysqli_connect_error());
+                                }
+
+                                $query = "SELECT * FROM currency ORDER BY Name ASC";
+                                $result = mysqli_query($conn, $query);
+                                $intCount = 0;
+                                $product = "";
+                                ?>
+                                <select id="Currency" name="Currency" required>
+                                        <option value="">Select currency</option>
+                                    <?php
+                                    while ($rows = mysqli_fetch_assoc($result)) {
+                                        ?>
+                                            <option value=<?php echo $rows["id"]; ?> style="font-weight: bold"><?php echo $rows["Name"]; ?></option>
+                                        <?php
+                                        $intCount++;
+                                    }
+                                    mysqli_close($conn);
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Price">Total Price:</label>
+                                <input type="number" step="0.01" id="Price" name="Price" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Color">Color</label>
+                                <input type="text" id="Color" name="Color" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Condition">Condition:</label>
+                                <select name="Condition" id="Condition">
+                                    <option value="">Select Condition</option>
+                                    <option value="Use">Used</option>
+                                    <option value="New">New</option>
+                                </select >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Mileage">Mileage:</label>
+                                <input type="number" step="0.01" id="Mileage" name="Mileage" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Origin">Origin:</label>
+                                <input type="text" id="Origin" name="Origin" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Status">Status:</label>
+                                <select name="Status" id="Status">
+                                    <option value="">Select Status</option>
+                                    <option value="Available">Available</option>
+                                    <option value="Unavailable">Shipped</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="chasis">Chasis:</label>
+                                <input type="text" id="chasis" name="chasis" required>
+                            </div>
+
+                            <div class="form-group">
+                                
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Registration">Registration No.: Insert NA if new Car</label>
+                                <input type="text" id="Registration" name="Registration" required>
+                            </div>
+
+                            <div class="form-group">
+                                
+                            </div>
+
+                            <input type="submit" value="Register Sale" >
+                        </form>
                     </div>
                 </div>
                 <!-- /.container-fluid -->
@@ -388,6 +383,29 @@ if ($result) {
             </div>
         </div>
     </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../JS/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../JS/inventory.js"></script>
+    <script src="../JS/logout.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.4/sweetalert2.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
 </body>
 
 </html>
