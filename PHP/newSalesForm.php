@@ -235,16 +235,31 @@ if ($result) {
                     <div>
                         <h2>Sales Registration Form</h2>
                         <form action="insert_sales.php" method="POST" id="newSales">
-                            <div class="form-group">
+                            <div class="form-group" id="date">
                                 <label for="sales_date">Sales Date:</label>
                                 <input type="datetime-local" id="sales_date" name="sales_date" required>
                             </div>
 
-                            <div class="form-group">
-                                <label for="customer_id">Customer ID:</label>
-                                <input type="text" id="customer_id" name="customer_id" required>
+                            <div class="form-group" id="nama">
+                                <label for="Name">Customer Name:</label>
+                                <input type="text" id="Name" name="Name" required>
                             </div>
 
+                            <div class="form-group">
+                                <label for="ic">Customer IC:</label>
+                                <input type="text" id="ic" name="ic" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Customer phone:</label>
+                                <input type="text" id="phone" name="phone" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Customer email:</label>
+                                <input type="text" id="email" name="email" required>
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="product_id">Product ID:</label>
                                 <?php
@@ -279,18 +294,8 @@ if ($result) {
                             </div>
 
                             <div class="form-group">
-                                <label for="quantity">Quantity:</label>
-                                <input type="number" id="quantity" name="quantity" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="total_price">Total Price:</label>
+                                <label for="total_price">Sold Price:</label>
                                 <input type="number" step="0.01" id="total_price" name="total_price" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="salesperson_id">Salesperson ID:</label>
-                                <input type="text" id="salesperson_id" name="salesperson_id" required>
                             </div>
 
                             <div class="form-group">
@@ -314,11 +319,6 @@ if ($result) {
                             </div>
 
                             <div class="form-group">
-                                <label for="shipping_address">Shipping Address:</label>
-                                <input type="text" id="shipping_address" name="shipping_address" required>
-                            </div>
-
-                            <div class="form-group">
                                 <label for="order_status">Order Status:</label>
                                 <select name="order_status" id="order_status">
                                     <option value="">Select a product</option>
@@ -337,6 +337,16 @@ if ($result) {
                                     <option value="Cash">Cash</option>
                                     <option value="Credit">Credit</option>
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="shipping_address">Shipping Address:</label>
+                                <input type="text" id="shipping_address" name="shipping_address" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="registration">Registration No.:</label>
+                                <input type="text" id="registration" name="registration" required>
                             </div>
 
                             <?php
@@ -361,10 +371,6 @@ if ($result) {
                                     <?php
                                 }
                             ?>
-
-                            <div class="form-group">
-                                
-                            </div>
 
                             <input type="submit" value="Register Sale" >
                         </form>

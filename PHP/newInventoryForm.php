@@ -233,7 +233,7 @@ if ($result) {
                 <div class="container-fluid">
                     <!-- Content Row -->
                     <div>
-                        <h2>Sales Registration Form</h2>
+                        <h2>New Inventory Form</h2>
                         <form action="insertInventory.php" method="POST" id="newInventory">
                             <div class="form-group">
                                 <label for="Make">Make:</label>
@@ -313,7 +313,7 @@ if ($result) {
                                 <select name="Status" id="Status">
                                     <option value="">Select Status</option>
                                     <option value="Available">Available</option>
-                                    <option value="Unavailable">Shipped</option>
+                                    <option value="Unavailable">Unavailable</option>
                                 </select>
                             </div>
 
@@ -335,7 +335,7 @@ if ($result) {
                                 
                             </div>
 
-                            <input type="submit" value="Register Sale" >
+                            <input type="submit" value="Insert Inventory" >
                         </form>
                     </div>
                 </div>

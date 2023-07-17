@@ -283,7 +283,7 @@ if ($result) {
                                                 <td><?php echo $rows["sales_date"]; ?></td>
                                                 <td hidden><?php echo $rows["customer_id"]; ?></td>
                                                 <td hidden><?php echo $rows["product_id"]; ?></td>
-                                                <td><?php echo $rows["total_price"]; ?></td>
+                                                <td><?php echo $rows["unit_price"]; ?></td>
                                                 <td hidden><?php echo $rows["salesperson_id"]; ?></td>
                                                 <td><?php echo $rows["payment_method"]; ?></td>
                                                 <td><?php echo $rows["discount"]; ?></td>
@@ -395,5 +395,6 @@ if ($result) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedcolumns/4.3.0/js/dataTables.fixedColumns.min.js"></script>
 
 </html>
