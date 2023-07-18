@@ -251,6 +251,8 @@ if ($result) {
                                             <th>Sales Date</th>
                                             <th hidden>Customer ID</th>
                                             <th hidden>Product ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Contact No.</th>
                                             <th>Original Price</th>
                                             <th>Sold Price</th>
                                             <th>Profit</th>
@@ -280,10 +282,16 @@ if ($result) {
                                         $intCount = 0;
                                         while ($rows = mysqli_fetch_assoc($result)) {
                                             $id = $rows["product_id"];
+                                            $cid = $rows["customer_id"];
+
                                             $sqli = "SELECT * FROM inventory WHERE delStat <> 1 AND ID = $id";
                                             $result1 = mysqli_query($conn, $sqli);
                                             $rows1 = mysqli_fetch_assoc($result1);
                                             $profit = $rows["unit_price"] - $rows1["Price"] ;
+
+                                            $sqlc = "SELECT * FROM customers WHERE delStat <> 1 AND id = $cid";
+                                            $resultc = mysqli_query($conn, $sqlc);
+                                            $rowsc = mysqli_fetch_assoc($resultc);
                                         ?>
                                             <tr>
                                                 <td hidden><?php echo $rows["sales_id"]; ?></td>
@@ -291,6 +299,8 @@ if ($result) {
                                                 <td><?php echo $rows["sales_date"]; ?></td>
                                                 <td hidden><?php echo $rows["customer_id"]; ?></td>
                                                 <td hidden><?php echo $rows["product_id"]; ?></td>
+                                                <td><?php echo $rowsc["name"]; ?></td>
+                                                <td><?php echo $rowsc["phone"]; ?></td>
                                                 <td><?php echo $rows1["Price"]; ?></td>
                                                 <td><?php echo $rows["unit_price"]; ?></td>
                                                 <?php

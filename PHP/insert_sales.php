@@ -40,7 +40,7 @@ $registration = $_POST["registration"];
 $fee = $_POST["fee"];
 $salesRef = generateRandomPhrase();
 
-$sqlCust = "INSERT INTO customers (name, phone, email, IC) VALUES ('$name', '$phone', '$email', '$ic')";
+$sqlCust = "INSERT INTO customers (name, phone, email, delStat, IC) VALUES ('$name', '$phone', '$email', 0, '$ic')";
 if (mysqli_query($conn, $sqlCust)) {
     $customer_id = mysqli_insert_id($conn);
     // echo "success ".$counter;
