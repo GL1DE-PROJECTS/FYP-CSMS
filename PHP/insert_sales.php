@@ -37,6 +37,7 @@ $payment_status = $_POST["payment_status"];
 $address = $_POST["shipping_address"];
 $remarks = $_POST["remarks"];
 $registration = $_POST["registration"];
+$fee = $_POST["fee"];
 $salesRef = generateRandomPhrase();
 
 $sqlCust = "INSERT INTO customers (name, phone, email, IC) VALUES ('$name', '$phone', '$email', '$ic')";
@@ -49,8 +50,8 @@ if (mysqli_query($conn, $sqlCust)) {
 }
 
 
-$sql = "INSERT INTO carsales (sales_date, customer_id, product_id,unit_price, payment_method, discount, tax, shipping_address, order_status, payment_status, delStat, salesRef, remarks)
-VALUES ('$date', '$customer_id', $product_id, $total_price, '$payment_method', $discount, $tax, '$address', '$order_status', '$payment_method', 0, '$salesRef', '$remarks');";
+$sql = "INSERT INTO carsales (sales_date, customer_id, product_id,unit_price, payment_method, discount, tax, shipping_address, order_status, payment_status, delStat, salesRef, remarks, shipFee)
+VALUES ('$date', '$customer_id', $product_id, $total_price, '$payment_method', $discount, $tax, '$address', '$order_status', '$payment_method', 0, '$salesRef', '$remarks', $fee);";
 if (mysqli_query($conn, $sql)) {
     // echo "success ".$counter;
     $counter++;

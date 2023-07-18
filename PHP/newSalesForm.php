@@ -294,7 +294,7 @@ if ($result) {
                             </div>
 
                             <div class="form-group">
-                                <label for="total_price">Sold Price:</label>
+                                <label for="total_price">Sold Price in MYR:</label>
                                 <input type="number" step="0.01" id="total_price" name="total_price" required>
                             </div>
 
@@ -349,6 +349,11 @@ if ($result) {
                                 <input type="text" id="registration" name="registration" required>
                             </div>
 
+                            <div class="form-group">
+                                <label for="fee">Shipping Fee</label>
+                                <input type="number" id="fee" name="fee" required>
+                            </div>
+
                             <?php
                                 if ($_SESSION["Level"] == 2)
                                 {
@@ -372,7 +377,11 @@ if ($result) {
                                 }
                             ?>
 
-                            <input type="submit" value="Register Sale" >
+                            <div class="form-group">
+                                <label for="">...</label>
+                                <input type="submit" value="Register Sale" >
+                            </div>
+
                         </form>
                     </div>
                 </div>

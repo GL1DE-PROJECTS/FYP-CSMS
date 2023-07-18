@@ -290,6 +290,7 @@ if ($result) {
                                             <th>Price</th>
                                             <th>Color</th>
                                             <th>Mileage</th>
+                                            <th>Registration No.</th>
                                             <th>Condition</th>
                                             <th>Location</th>
                                             <th>Status</th>
@@ -319,6 +320,7 @@ if ($result) {
                                                 <td><?php echo $rows["Price"]; ?></td>
                                                 <td><?php echo $rows["Color"]; ?></td>
                                                 <td><?php echo $rows["Mileage"]; ?></td>
+                                                <td><?php echo $rows["registration"]; ?></td>
                                                 <td><?php echo $rows["Cond"]; ?></td>
                                                 <td><?php echo $rows["Location"]; ?></td>
                                                 <td><?php echo $rows["Status"]; ?></td>

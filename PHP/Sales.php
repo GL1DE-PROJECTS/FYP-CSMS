@@ -251,11 +251,14 @@ if ($result) {
                                             <th>Sales Date</th>
                                             <th hidden>Customer ID</th>
                                             <th hidden>Product ID</th>
-                                            <th>Price</th>
+                                            <th>Original Price</th>
+                                            <th>Sold Price</th>
+                                            <th>Profit</th>
                                             <th hidden>Seller ID</th>
                                             <th>Payment Method</th>
                                             <th>Discount</th>
                                             <th>Tax</th>
+                                            <th>Shipping Fee</th>
                                             <th>Shipping City</th>
                                             <th>Order Status</th>
                                             <th>Payment Status</th>
@@ -276,6 +279,11 @@ if ($result) {
                                         $result = mysqli_query($conn, $query);
                                         $intCount = 0;
                                         while ($rows = mysqli_fetch_assoc($result)) {
+                                            $id = $rows["product_id"];
+                                            $sqli = "SELECT * FROM inventory WHERE delStat <> 1 AND ID = $id";
+                                            $result1 = mysqli_query($conn, $sqli);
+                                            $rows1 = mysqli_fetch_assoc($result1);
+                                            $profit = $rows["unit_price"] - $rows1["Price"] ;
                                         ?>
                                             <tr>
                                                 <td hidden><?php echo $rows["sales_id"]; ?></td>
@@ -283,11 +291,23 @@ if ($result) {
                                                 <td><?php echo $rows["sales_date"]; ?></td>
                                                 <td hidden><?php echo $rows["customer_id"]; ?></td>
                                                 <td hidden><?php echo $rows["product_id"]; ?></td>
+                                                <td><?php echo $rows1["Price"]; ?></td>
                                                 <td><?php echo $rows["unit_price"]; ?></td>
+                                                <?php
+                                                    if($profit < 0)
+                                                    {
+                                                        ?> <td style="color: red;"><?php echo $profit; ?></td> <?php
+                                                    }
+                                                    else
+                                                    {
+                                                        ?> <td style="color: green;"><?php echo $profit; ?></td> <?php
+                                                    }
+                                                ?>
                                                 <td hidden><?php echo $rows["salesperson_id"]; ?></td>
                                                 <td><?php echo $rows["payment_method"]; ?></td>
                                                 <td><?php echo $rows["discount"]; ?></td>
                                                 <td><?php echo $rows["tax"]; ?></td>
+                                                <td><?php echo $rows["shipFee"]; ?></td>
                                                 <td><?php echo $rows["shipping_address"]; ?></td>
                                                 <td><?php echo $rows["order_status"]; ?></td>
                                                 <td><?php echo $rows["payment_status"]; ?></td>

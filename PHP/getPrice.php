@@ -67,7 +67,7 @@ for ($month = 1; $month <= 12; $month++) {
     // SQL query to fetch the total sales for each month
     $sql = "SELECT SUM(unit_price) AS total_sales
             FROM carsales
-            WHERE MONTH(sales_date) = $month";
+            WHERE MONTH(sales_date) = $month AND delStat = 0";
 
     // Execute the query
     $result = $conn->query($sql);

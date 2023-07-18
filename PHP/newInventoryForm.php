@@ -266,7 +266,7 @@ if ($result) {
                                 $product = "";
                                 ?>
                                 <select id="Currency" name="Currency" required>
-                                        <option value="">Select currency</option>
+                                        <option value="">Select Origin currency</option>
                                     <?php
                                     while ($rows = mysqli_fetch_assoc($result)) {
                                         ?>
@@ -280,7 +280,7 @@ if ($result) {
                             </div>
 
                             <div class="form-group">
-                                <label for="Price">Total Price:</label>
+                                <label for="Price">Total Price in MYR:</label>
                                 <input type="number" step="0.01" id="Price" name="Price" required>
                             </div>
 

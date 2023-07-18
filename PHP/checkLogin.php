@@ -16,7 +16,7 @@
     // $username = str_replace("'","''", $_POST["username"]);
     // $password = str_replace("'","''", $_POST["password"]);
 
-    $username = $_POST["username"];
+    $username = str_replace("'", "' '",$_POST["username"]);
     $password = getHash($_POST["password"]);
 
 
@@ -67,7 +67,6 @@
     else
     {
         mysqli_close($conn);
-        echo $result." ".$strSql.$password;
         die('Query failed: ' . mysqli_error($conn));
     }
 ?>
